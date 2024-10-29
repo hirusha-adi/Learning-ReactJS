@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx'
+import { TaskList } from './components/TaskList.jsx';
 
 function App() {
+
+
+
     return (
         <>
             <Header />
-            <p>Welcome to my App!</p>
+            <TaskList pgTitle="Page Name" />
             <Footer />
         </>
     )
