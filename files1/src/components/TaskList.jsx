@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { TaskCard } from './TaskCard.jsx';
+import { BoxCard } from './BoxCard.jsx';
 
 const TaskList = (props) => {
 
@@ -20,12 +22,14 @@ const TaskList = (props) => {
             <button onClick={() => setShow(!show)}>{show ? "Hide" : "Show"}</button>
             <ul>
                 {show && tasks.map((task) => (
-                    <li key={task.id}>
-                        <span>{task.id} - {task.name} - {task.completed ? "Completed" : "Not Completed"}</span>
-                        <button onClick={() => handleDelete(task.id)}>Delete</button>
-                    </li>
+                    <TaskCard  key={task.id} task={task} handleDelete={handleDelete} />
                 ))}
             </ul>
+            <BoxCard>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ex, beatae!</p>
+            </BoxCard>
+            
+            
         </>
     )
 }
