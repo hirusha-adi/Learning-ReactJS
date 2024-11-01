@@ -20,6 +20,7 @@ const InputForm = () => {
                 <button type="submit">Add Task</button>
                 <span onClick={handleReset} className="reset">Reset</span>
             </form>
+            <p>{taskValue}</p>
         </>
     )
 }
