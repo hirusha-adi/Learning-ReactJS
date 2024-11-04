@@ -1,16 +1,20 @@
-import { useState } from 'react'
 import './App.css'
+import { BodyContent } from './components/BodyContent'
+import { Header } from './components/Header'
+import { AddTask } from './components/AddTask'
+import { ShowTasks } from './components/ShowTasks'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
+    return (
+        <>  
+            <Header />
+            <BodyContent>
+                <AddTask />
+                <ShowTasks />
+            </BodyContent>
+        </>
+    )
 }
 
 export default App
