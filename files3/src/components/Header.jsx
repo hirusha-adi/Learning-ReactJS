@@ -5,7 +5,7 @@ const Header = () => {
     const [theme, setTheme] = useState("light");
 
     useEffect(() => {
-        document.documentElement.removeAttribute("class");
+        document.documentElement.removeAttribute("class"); // to clear previous styles
         document.documentElement.classList.add(theme);
     }, [theme]);
 
