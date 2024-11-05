@@ -43,7 +43,7 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
 
     return (
         <div className="flex justify-center items-center ">
-            <div className="card bg-base-100 shadow-xl p-2 w-full max-w-md m-12">
+            <div className="card bg-base-100 p-2 w-full max-w-md m-12">
                 <form className="card-body flex flex-row items-center space-x-2" onSubmit={handleSubmit}>
                     <input
                         type="text"

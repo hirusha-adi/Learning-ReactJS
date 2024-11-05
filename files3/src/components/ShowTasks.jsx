@@ -17,7 +17,7 @@ const ShowTasks = ({ tasksList, setTasksList, task, setTask }) => {
 
     return (
         <div className="flex justify-center items-center w-full">
-            <div className="card bg-white shadow-xl w-full p-8">
+            <div className="card bg-white w-full p-8">
                 <div className="row pb-6 center">
                     <div className="col-10">
                         <h2 className='text-3xl font-bold pt-3 pl-3'>

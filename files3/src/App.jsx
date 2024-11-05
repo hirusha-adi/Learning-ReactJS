@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import './App.css'
 import { BodyContent } from './components/BodyContent'
 import { Header } from './components/Header'
 import { AddTask } from './components/AddTask'
 import { ShowTasks } from './components/ShowTasks'
+import './App.css'
 
 function App() {
     const [tasksList, setTasksList] = useState(JSON.parse(localStorage.getItem("tasklist")) || [])

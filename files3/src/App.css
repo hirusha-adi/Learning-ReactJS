@@ -1,0 +1,25 @@
+/* themes */
+.light {
+    background-color: rgb(223, 223, 223);
+    transition: all 0.5s;
+}
+
+.dark {
+    background-color: rgb(20, 20, 20);
+    transition: all 0.5s;
+}
+
+.purple {
+    background-color: rgb(209, 153, 255);
+    transition: all 0.5s;
+}
+
+.blue {
+    background-color: rgb(153, 209, 255);
+    transition: all 0.5s;
+}
+
+.green {
+    background-color: rgb(153, 255, 209);
+    transition: all 0.5s;
+}
