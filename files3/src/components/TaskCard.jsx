@@ -1,7 +1,7 @@
 import * as Icon from 'react-bootstrap-icons';
 import PropTypes from 'prop-types';
 
-const TaskCard = ({ taskId, taskTxt, timestamp, deleteOneTask }) => {
+const TaskCard = ({ taskId, taskTxt, timestamp, deleteOneTask, editTask }) => {
 
     return (
         <div className="card bg-base-100 shadow-md border-l-4 border-blue-500 p-4 flex justify-between m-1">
@@ -11,7 +11,7 @@ const TaskCard = ({ taskId, taskTxt, timestamp, deleteOneTask }) => {
                 </div>
                 <div className="col-4 text-right text-base">
                     <div className="col inline-block mr-5">
-                        <button className="text-blue-500 hover:text-blue-700">
+                        <button className="text-blue-500 hover:text-blue-700" onClick={() => editTask(taskId)}>
                             <Icon.Pencil />
                         </button>
                     </div>
@@ -27,11 +27,6 @@ const TaskCard = ({ taskId, taskTxt, timestamp, deleteOneTask }) => {
             </div>
         </div>
     )
-}
-
-TaskCard.propTypes = {
-    taskTxt: PropTypes.string.isRequired,
-    timestamp: PropTypes.string.isRequired,
 }
 
 export { TaskCard }

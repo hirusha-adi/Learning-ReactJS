@@ -2,7 +2,7 @@ import * as Icon from 'react-bootstrap-icons';
 import Swal from 'sweetalert2'
 
 
-const AddTask = ({ tasksList, setTasksList }) => {
+const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -25,6 +25,8 @@ const AddTask = ({ tasksList, setTasksList }) => {
             time: date.toLocaleString()
         };
         setTasksList([...tasksList, newTask]);
+
+        e.target.reset()
     }
 
     return (
@@ -35,7 +37,7 @@ const AddTask = ({ tasksList, setTasksList }) => {
                         type="text"
                         placeholder="Enter task"
                         className="input input-bordered w-full max-w-xs"
-                        name='task'
+                        name='task' autoComplete='off'
                     />
                     <button className="btn bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold" type='submit'>
                         <Icon.PlusCircle />
