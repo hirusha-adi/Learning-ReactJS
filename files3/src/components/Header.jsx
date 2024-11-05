@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react';
 
 
 const Header = () => {
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(JSON.parse(localStorage.getItem("theme")) || "light");
 
     useEffect(() => {
+        localStorage.setItem("theme", JSON.stringify(theme))
         document.documentElement.removeAttribute("class"); // to clear previous styles
         document.documentElement.classList.add(theme);
     }, [theme]);
