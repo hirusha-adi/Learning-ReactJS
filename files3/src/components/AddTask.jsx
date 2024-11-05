@@ -6,8 +6,9 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
 
     function handleSubmit(e) {
         e.preventDefault()
-        const value = e.target.task.value;
 
+        const date = new Date();
+        const value = e.target.task.value;
         if (!value) {
             Swal.fire({
                 title: 'Error!',
@@ -18,13 +19,25 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
             return
         }
 
-        const date = new Date();
-        const newTask = {
-            id: date.getTime(),
-            name: value,
-            time: date.toLocaleString()
-        };
-        setTasksList([...tasksList, newTask]);
+        if (task.id) {
+            const updatedTaskList = tasksList.map((todo) => (
+                todo.id === task.id ? {
+                    id: task.id,
+                    name: value,
+                    time: date.toLocaleString()
+                } : todo
+            ))
+            setTasksList(updatedTaskList)
+            setTask({})
+        }
+        else {
+            const newTask = {
+                id: date.getTime(),
+                name: value,
+                time: date.toLocaleString()
+            };
+            setTasksList([...tasksList, newTask]);
+        }
 
         e.target.reset()
     }
@@ -38,6 +51,8 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
                         placeholder="Enter task"
                         className="input input-bordered w-full max-w-xs"
                         name='task' autoComplete='off'
+                        value={task.name}
+                        onChange={(e) => setTask({ ...task, name: e.target.value })}
                     />
                     <button className="btn bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold" type='submit'>
                         <Icon.PlusCircle />
