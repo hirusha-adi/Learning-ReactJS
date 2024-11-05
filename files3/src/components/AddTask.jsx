@@ -28,7 +28,6 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
                 } : todo
             ))
             setTasksList(updatedTaskList)
-            setTask({})
         }
         else {
             const newTask = {
@@ -39,7 +38,7 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
             setTasksList([...tasksList, newTask]);
         }
 
-        e.target.reset()
+        setTask({})
     }
 
     return (
@@ -51,11 +50,11 @@ const AddTask = ({ tasksList, setTasksList, task, setTask }) => {
                         placeholder="Enter task"
                         className="input input-bordered w-full max-w-xs"
                         name='task' autoComplete='off'
-                        value={task.name}
+                        value={task.name || ""}
                         onChange={(e) => setTask({ ...task, name: e.target.value })}
                     />
                     <button className="btn bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold" type='submit'>
-                        <Icon.PlusCircle />
+                        {task.id ? <Icon.Pencil /> : <Icon.PlusCircle />}
                     </button>
                 </form>
             </div>
