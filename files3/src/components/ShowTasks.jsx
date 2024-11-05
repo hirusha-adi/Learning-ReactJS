@@ -1,7 +1,15 @@
 import { TaskCard } from './TaskCard';
 
+const ShowTasks = ({ tasksList, setTasksList }) => {
 
-const ShowTasks = () => {
+    function deleteAllTasks() {
+        setTasksList([])
+    }
+
+    function deleteOneTask(id) {
+        setTasksList(tasksList.filter((task) => task.id !== id))
+    }
+
     return (
         <div className="flex justify-center items-center w-full">
             <div className="card bg-white shadow-xl w-full p-8">
@@ -12,16 +20,19 @@ const ShowTasks = () => {
                         </h2>
                     </div>
                     <div className="col-2 text-right pr-5">
-                        <button className="btn btn-error btn-outline pt-0 pb-0">Clear All</button>
+                        <button className="btn btn-error btn-outline pt-0 pb-0" onClick={deleteAllTasks}>Clear All</button>
                     </div>
                 </div>
-                
+
                 <hr />
                 <div className=" grid grid-cols-1 gap-4 p-8 w-full md:grid-cols-3 ">
-                    <TaskCard taskTxt="Task 1" timestamp="2:09:01 AM 9/14/2022" />
-                    <TaskCard taskTxt="Task 1" timestamp="2:09:01 AM 9/14/2022" />
-                    <TaskCard taskTxt="Task 1" timestamp="2:09:01 AM 9/14/2022" />
-                    <TaskCard taskTxt="Task 1" timestamp="2:09:01 AM 9/14/2022" />
+                    {tasksList.length === 0 ? (
+                        <h2 className="text-2xl font-bold">No tasks found</h2>
+                    ) : (
+                        tasksList.map((task) => (
+                            <TaskCard key={task.id} taskId={task.id} taskTxt={task.name} timestamp={task.time} deleteOneTask={deleteOneTask} />
+                        ))
+                    )}
                 </div>
             </div>
         </div>
