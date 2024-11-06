@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Outlet } from "react-router-dom"
 
 const Contact = () => {
 
@@ -12,6 +12,10 @@ const Contact = () => {
             Contact
             <br />
             <button onClick={handleSubmit}>Submit Form</button>
+            <br />
+
+            {/* this is where the content in subpage goes to */}
+            <Outlet />
         </>
     )
 }

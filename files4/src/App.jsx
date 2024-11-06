@@ -4,6 +4,7 @@ import { Home } from "./components/Home"
 import { Contact } from "./components/Contact"
 import { ContactLk } from "./components/ContactLk"
 import { ContactEu } from "./components/ContactEu"
+import { ContactOther } from "./components/ContactOther"
 import { ProductList } from "./components/ProductList"
 import { ProductDetail } from "./components/ProductDetail"
 import { PageNotFound } from "./components/PageNotFound"
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/contact" element={<Contact />}>
                     <Route path="lk" element={<ContactLk />} />
                     <Route path="eu" element={<ContactEu />} />
+                    <Route path="*" element={<ContactOther />} />
                 </Route>
                 <Route path="/product" element={<ProductList />} />
                 <Route path="/product/:id" element={<ProductDetail />} />
