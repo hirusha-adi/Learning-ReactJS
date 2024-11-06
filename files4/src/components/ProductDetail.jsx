@@ -18,8 +18,6 @@ const ProductDetail = () => {
     console.log(location.hash)  // #section
     console.log(location.state)  // { from: '/' } (no idea)
 
-
-
     return (
         <>
             Product Details of {params.id}
