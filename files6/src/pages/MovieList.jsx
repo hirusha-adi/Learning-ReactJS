@@ -1,6 +1,21 @@
+import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 
+
 const MovieList = () => {
+
+    const [movies, setMovies] = useState([])
+
+
+
+    useEffect(() => {
+        async function fetchMovies() {
+            const response = await fetch()
+            const data = await response.json()
+            setMovies(data.results)
+        }
+    }, [])
+
     return (
         <>
             <main>
