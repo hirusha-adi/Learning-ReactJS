@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Card = ({ movie }) => {
+const Card = ({ movie, apiPath }) => {
     const imgUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : 'https://via.placeholder.com/300x450'
     return (
         <>
@@ -23,7 +23,7 @@ const Card = ({ movie }) => {
                     {`${movie.overview.substring(0, 120)}${movie.overview.length > 120 ? '...' : ''}`}
                 </p>
                 <p className="text-gray-600 italic pt-2">
-                    Released on: {movie.release_date}
+                    {apiPath === "movie/upcoming" ? "Will be released on:" : "Released on:"} {movie.release_date}
                 </p>
             </Link >
         </>
