@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { Fragment } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
@@ -11,8 +11,18 @@ function classNames(...classes) {
 
 const Header = () => {
 
+    const navigate = useNavigate()
     const clsInactive = "inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
     const clsActive = "inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const queryTerm = e.target.query.value
+        console.log(queryTerm)
+        e.target.reset()
+
+        return navigate(`/search?q=${queryTerm}`)
+    }
 
     return (
         <Disclosure as="nav" className="bg-white shadow">
@@ -63,21 +73,23 @@ const Header = () => {
                             </div>
                             <div className="flex flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
                                 <div className="w-full max-w-lg lg:max-w-xs">
-                                    <label htmlFor="search" className="sr-only">
+                                    <label htmlFor="query" className="sr-only">
                                         Search
                                     </label>
-                                    <div className="relative">
-                                        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                    <form onSubmit={handleSubmit}>
+                                        <div className="relative">
+                                            <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                                <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                                            </div>
+                                            <input
+                                                id="query"
+                                                name="query"
+                                                className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                                                placeholder="Search..."
+                                                type="search"
+                                            />
                                         </div>
-                                        <input
-                                            id="search"
-                                            name="search"
-                                            className="block w-full rounded-md border border-gray-300 bg-white py-2 pl-10 pr-3 leading-5 placeholder-gray-500 focus:border-indigo-500 focus:placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                                            placeholder="Search..."
-                                            type="search"
-                                        />
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             <div className="flex items-center lg:hidden">

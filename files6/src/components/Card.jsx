@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Card = ({ movie, apiPath }) => {
-    const imgUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : 'https://via.placeholder.com/300x450'
+    const imgUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : `https://placehold.co/300x450?text=${movie.original_title}`
     return (
         <>
             <Link to={`/movie/${movie.id}`} className="max-w-72 border rounded-2xl p-3 hover:cursor-pointer m-2">
