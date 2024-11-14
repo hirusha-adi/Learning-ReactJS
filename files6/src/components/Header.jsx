@@ -18,7 +18,6 @@ const Header = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const queryTerm = e.target.query.value
-        console.log(queryTerm)
         e.target.reset()
 
         return navigate(`/search?q=${queryTerm}`)

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
+import { useEffect } from "react";
 
 const MovieDetail = () => {
 
@@ -7,7 +8,10 @@ const MovieDetail = () => {
     const { data: movie } = useFetch(`movie/${params.id}`)
     const moviePoster = movie.poster_path ? `https://image.tmdb.org/t/p/w300/${movie.poster_path}` : `https://placehold.co/300x450?text=${movie.original_title}`
 
-    console.log(movie.genres)
+    useEffect(() => {
+        document.title = `${movie.original_title}`
+    })
+
     return (
         <>
             <main>
