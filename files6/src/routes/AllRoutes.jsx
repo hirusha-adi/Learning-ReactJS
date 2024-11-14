@@ -12,8 +12,9 @@ const AllRoutes = () => {
                 <Route path="search" element={<Search apiPath="search/movie" />} />
 
                 <Route path="movie/:id" element={<MovieDetail />} />
+                {/* note we dont need to pass in the :id as props */}
 
-                <Route path="*" element={<MovieList />} />
+                <Route path="*" element={<PageNotFound />} />
             </Routes>
         </>
     );

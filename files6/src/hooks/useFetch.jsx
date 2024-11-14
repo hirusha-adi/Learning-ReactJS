@@ -16,7 +16,15 @@ export const useFetch = (apiPath, queryTerm = "") => {
             };
             const response = await fetch(url, options)
             const data = await response.json()
-            setData(data.results)
+
+            if (data.results) {
+                // all movies
+                setData(data.results);
+            } else {
+                // single movie
+                setData(data);
+            }
+
         }
         fetchMovies()
     }, [url])
